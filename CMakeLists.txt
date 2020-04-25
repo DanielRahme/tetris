@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13.0)
 
 # The project name, version and languages
-project(Hello VERSION 1.0 LANGUAGES CXX)
+project(Tetris VERSION 1.0 LANGUAGES CXX)
 
 # NCurses
 find_package(Curses REQUIRED)
@@ -15,8 +15,8 @@ target_include_directories(LibSources PUBLIC inc)
 target_compile_features(LibSources PUBLIC cxx_std_17)
 
 # The executable target
-set(TargetName hello)
-add_executable(${TargetName} src/hello.cpp)
+set(TargetName tetris)
+add_executable(${TargetName} src/main.cpp)
 
 # Set the language standard to C++17 for target
 set_target_properties(${TargetName} PROPERTIES  CXX_STANDARD 17)
@@ -32,4 +32,3 @@ target_compile_options(${TargetName} PRIVATE
     )
 
 target_link_libraries(${TargetName} PRIVATE LibSources ${CURSES_LIBRARIES})
-#target_link_libraries(${TargetName} ${CURSES_LIBRARIES})
