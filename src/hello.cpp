@@ -10,13 +10,8 @@
 #include <ncurses.h>
 
 
-static void wait(const unsigned long long delay)
-{
-    for (volatile unsigned long long i = 0; i < delay; i++);
-}
 
-
-int main()
+auto main() -> int
 {
     func::print_hello("World");
 
@@ -35,12 +30,9 @@ int main()
 
     for (auto i = 0; i < 80; i++) {
         addch('X');
-        wait(100000000);
+        napms(100);
         refresh();			/* Print it on to the real screen */
     }
-
-
-
 
 
     mvaddstr(1, 0, "Type any character to see it in bold\n");
