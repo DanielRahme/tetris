@@ -1,13 +1,15 @@
 /**
  * @file hello.cpp
  * @author Daniel Rahme
- * @date 2019-04-29
- * @brief A hello world program.
+ * @date 2020-04-26
+ * @brief A tetris game using NCurses.
  */
 
 #include <iostream>
-#include "functions.hpp"
 #include <ncurses.h>
+
+#include "functions.hpp"
+#include "gfx.hpp"
 
 
 
@@ -20,21 +22,10 @@ auto main() -> int
 
     std::cout << "Square of 3 == " << func::square(3) << '\n';
 
+    gfx::init();
+    gfx::loading_bar(50);
 
     int ch;
-
-    initscr();			/* Start curses mode 		*/
-    raw();				/* Line buffering disabled	*/
-    keypad(stdscr, TRUE);		/* We get F1, F2 etc..		*/
-    noecho();			/* Don't echo() while we do getch */
-
-    for (auto i = 0; i < 80; i++) {
-        addch('X');
-        napms(100);
-        refresh();			/* Print it on to the real screen */
-    }
-
-
     mvaddstr(1, 0, "Type any character to see it in bold\n");
     ch = getch();			/* If raw() hadn't been called
                                          * we have to press enter before it
