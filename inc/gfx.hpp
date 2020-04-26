@@ -19,6 +19,12 @@ namespace gfx
     };
 
 
+    auto get_kb = []() -> char
+    {
+        return getch();
+    };
+
+
     template<typename T>
     void loading_bar(T percent)
     {

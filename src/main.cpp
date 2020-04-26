@@ -25,11 +25,9 @@ auto main() -> int
     gfx::init();
     gfx::loading_bar(50);
 
-    int ch;
     mvaddstr(1, 0, "Type any character to see it in bold\n");
-    ch = getch();			/* If raw() hadn't been called
-                                         * we have to press enter before it
-                                         * gets to the program 		*/
+    auto ch = gfx::get_kb();
+
     if(ch == KEY_F(1))		/* Without keypad enabled this will */
         printw("F1 Key pressed");/*  not get to us either	*/
     /* Without noecho() some ugly escape
