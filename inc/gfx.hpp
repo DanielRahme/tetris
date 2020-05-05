@@ -25,6 +25,25 @@ namespace gfx
     };
 
 
+    auto add_char = [](char chr) -> void
+    {
+        addch(chr);
+    };
+
+
+    auto move_cursor = [](int x, int y) -> void
+    {
+        move(y, x);
+    };
+
+
+    auto mv_add_char = [](int x, int y, char chr) -> void
+    {
+        mvaddch(y, x, chr);
+    };
+
+
+
     template<typename T>
     void loading_bar(T percent)
     {
