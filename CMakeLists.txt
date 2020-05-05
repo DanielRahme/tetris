@@ -25,7 +25,7 @@ set_target_properties(${TargetName} PROPERTIES  CXX_STANDARD 20)
 target_compile_options(${TargetName} PRIVATE
     -lncurses
     -O3
-    -Werror
+    #-Werror
     -Wall
     -Wextra
     -Wpedantic
