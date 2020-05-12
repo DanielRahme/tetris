@@ -8,6 +8,8 @@
 #ifndef GFX_H
 #define GFX_H
 
+#include <ncurses.h>
+
 namespace gfx 
 {
     auto init = []() -> void

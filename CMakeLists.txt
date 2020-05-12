@@ -10,6 +10,7 @@ include_directories(${CURSES_INCLUDE_DIR})
 # The library files
 add_library(LibSources 
     src/functions.cpp 
+    src/tetris.cpp
     )
 target_include_directories(LibSources PUBLIC inc)
 target_compile_features(LibSources PUBLIC cxx_std_20)
