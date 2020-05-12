@@ -20,23 +20,26 @@ auto main() -> int
     add_shape(0, 10);
     add_shape(0, 20);
 
-    mvaddstr(1, 0, "Type any character to see it in bold\n");
+    gfx::mv_add_str(1, 0, "Type any character to see it in bold\n");
     auto ch = gfx::get_kb();
 
     if(ch == KEY_F(1))		/* Without keypad enabled this will */
-        printw("F1 Key pressed");/*  not get to us either	*/
+        gfx::print("F1 Key pressed");/*  not get to us either	*/
     /* Without noecho() some ugly escape
      * charachters might have been printed
      * on screen			*/
     else
-    {	printw("The pressed key is ");
-        attron(A_BOLD);
-        printw("%c", ch);
-        attroff(A_BOLD);
+    {	
+        //printw("The pressed key is ");
+        gfx::print("The pressed key is: ");
+        gfx::attribute_on(A_BOLD);
+        gfx::printc(ch);
+        gfx::attribute_off(A_BOLD);
     }
-    refresh();			/* Print it on to the real screen */
-    getch();			/* Wait for user input */
-    endwin();			/* End curses mode		  */
+
+    gfx::update();
+    gfx::get_ch();
+    gfx::close();
 
     return 0;
 }

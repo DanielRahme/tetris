@@ -2,7 +2,7 @@
  * @file gfx.hpp
  * @author Daniel Rahme
  * @date 2020-04-26
- * @brief Graphics library using curses.
+ * @brief Wrappers for curses functions.
  */
 
 #ifndef GFX_H
@@ -44,21 +44,48 @@ namespace gfx
         mvaddch(y, x, chr);
     };
 
-
-
-    template<typename T>
-    void loading_bar(T percent)
+    auto mv_add_str = [](int x, int y, auto str) -> void
     {
-        for (auto i = 0; i < 100; i++) {
-            char symbol = (i < percent) ? 'X' : '-';
-            addch(symbol);
+        mvaddstr(y, x, str);
+    };
 
-            napms(100);
-            refresh();
-        }
-    }
+    auto update = []() -> void
+    {
+        refresh();
+    };
+    
+    auto get_ch = []() -> void
+    {
+        getch();
+    };
 
 
+    auto close = []() -> void
+    {
+        endwin();
+    };
+    
+
+    auto print = [](auto msg) -> void
+    {
+        printw(msg);
+    };
+
+    auto printc = [](char chr) -> void
+    {
+        printw("%c", chr);
+    };
+
+
+    auto attribute_on = [](auto attr) -> void
+    {
+        attron(attr);
+    };
+
+    auto attribute_off = [](auto attr) -> void
+    {
+        attroff(attr);
+    };
 } // end namespace gfx
 
 #endif
